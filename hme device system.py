@@ -72,9 +72,12 @@ class SecurityCamera(Device):
             print(f"{self.name} must be ON to record.")
 
     def stop_recording(self):
-        self.recording = False
-        print(f"{self.name} stopped recording.")
-
+        if self. is_on:
+           self.recording = False
+           print(f"{self.name} stopped recording.")
+        else:
+            print (f"{self.name} is already OFF") 
+            
     def get_status(self):
         recording_status = "Recording" if self.recording else "Idle"
         return super().get_status() + f", Status: {recording_status}"
